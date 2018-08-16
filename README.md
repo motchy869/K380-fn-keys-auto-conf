@@ -1,5 +1,5 @@
 # K380-auto-conf
-This python program watches Logicool K380 keyboard connection, and everytime its new connection is detected, automatically normalize the fnction key configuration.
+This python program watches Logicool K380 keyboard connection, and every time its reonnection is detected, automatically normalize the fnction key configuration.
 
 This program **requires another core program**: https://github.com/jergusg/k380-function-keys-conf, and extends its function so that you no longer need to manually execute a shell script every time you reconnect K380.
 
