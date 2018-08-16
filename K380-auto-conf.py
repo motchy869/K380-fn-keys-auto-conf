@@ -3,7 +3,7 @@
 """
 (ROOT RQUIRED)
 This script watches K380's connection.
-Every time K380's new connection is detected, run fn_on.sh to normalize the fn-key configuration.
+Every time its reconnection is detected, run fn_on.sh to normalize the fn-key configuration.
 """
 
 import re
@@ -33,7 +33,7 @@ def main():
 	if re.search(r'Device {0}[\s\S]*Connected: ((yes|no))'.format(mac), s).groups()[0] == 'yes':
 		sp.run('/home/motchy/apps/k380-function-keys-conf/fn_on.sh')
 
-	#Run fn_on.sh every time K380's new connection is detected.
+	#Run fn_on.sh every time K380's reconnection is detected.
 	proc = sp.Popen('bluetoothctl', stdin=sp.PIPE, stdout=sp.PIPE)
 	signal.signal(signal.SIGINT, signal_handler)
 	signal.signal(signal.SIGTERM, signal_handler)
