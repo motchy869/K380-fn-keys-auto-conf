@@ -3,7 +3,7 @@
 """
 (ROOT RQUIRED)
 This script watches K380's connection.
-Everytime K380's new connection is detected, run fn_on.sh to normalize the fn-key configuration.
+Every time K380's new connection is detected, run fn_on.sh to normalize the fn-key configuration.
 """
 
 import re
