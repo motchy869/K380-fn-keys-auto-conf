@@ -22,10 +22,12 @@ def main():
 
 	#Get K380's MAC address.
 	s = sp.run(('bt-device', '-l'), stdout=sp.PIPE).stdout.decode('utf-8')
-	if 'Keyboard K380' not in s:
+	match = re.search(r'Keyboard K380 \((([0-9,A-F]{2}:){5}[0-9,A-F]{2})\)', s)
+	if match:
+		mac = match.groups()[0]
+	else:
 		print('Error: Keyboard K380 is not paired.')
 		sys.exit(1)
-	mac = re.search(r'Keyboard K380 \((([0-F]{2}:){5}[0-F]{2})\)', s).groups()[0]
 
 	#If K380 is already connected, then run fn_on.sh to certainly normalize the fn-key configuration.
 	proc = sp.Popen('bluetoothctl', stdin=sp.PIPE, stdout=sp.PIPE)
