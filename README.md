@@ -10,4 +10,4 @@ You need to install following commands.
 Download and build https://github.com/jergusg/k380-function-keys-conf.
 Then put this python code (`K380-fn-keys-auto-conf.py`) in the same directory as `fn_on.sh`.
 This program **requires root privileges**.
-I recommend registering this program to auto start-up with root privileges.
+I recommend registering this program to auto start-up with root privileges (see: https://www.maketecheasier.com/run-bash-script-as-root-during-startup-linux/).
