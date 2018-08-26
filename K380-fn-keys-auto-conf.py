@@ -33,7 +33,7 @@ def main():
 	proc = sp.Popen('bluetoothctl', stdin=sp.PIPE, stdout=sp.PIPE)
 	s = proc.communicate('info {0}\nexit'.format(mac).encode('utf-8'))[0].decode('utf-8')
 	if re.search(r'Device {0}[\s\S]*Connected: ((yes|no))'.format(mac), s).groups()[0] == 'yes':
-		sp.run('/home/motchy/apps/k380-function-keys-conf/fn_on.sh')
+		sp.run('./fn_on.sh')
 
 	#Run fn_on.sh every time K380's reconnection is detected.
 	proc = sp.Popen('bluetoothctl', stdin=sp.PIPE, stdout=sp.PIPE)
@@ -43,7 +43,7 @@ def main():
 		s = proc.stdout.readline().decode('utf-8')
 		if mac in s and 'Connected: yes' in s:
 			sleep(0.5)	#a short wait is necessary
-			sp.run('/home/motchy/apps/k380-function-keys-conf/fn_on.sh')
+			sp.run('./fn_on.sh')
 
 if __name__ == '__main__':
 	main()
