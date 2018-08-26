@@ -6,6 +6,7 @@ This script watches K380's connection.
 Every time its reconnection is detected, run fn_on.sh to normalize the fn-key configuration.
 """
 
+import os
 import re
 import signal
 from time import sleep
@@ -19,6 +20,8 @@ def main():
 	def signal_handler(num, frame):	#pylint: disable=W0613
 		proc.kill()
 		sys.exit(0)
+	
+	os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 	#Get K380's MAC address.
 	s = sp.run(('bt-device', '-l'), stdout=sp.PIPE).stdout.decode('utf-8')
